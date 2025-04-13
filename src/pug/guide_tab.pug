@@ -1,0 +1,134 @@
+extends ./layout/layout
+
+block content
+    h1.guide__title Tab
+    main.textfield-guide
+        h2.guide__type-title Default
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub size 고정
+                div.guide__type-content
+                    div.tab(data-js="tab")
+                        ul.tab__list(role="tablist" aria-label="콘텐츠 선택 탭")
+                            li.tab__item(data-js="tabItem")
+                                button.tab__button(
+                                type="button"
+                                role="tab"
+                                data-js="tabButton"
+                                ) Tab 1
+
+                            li.tab__item(data-js="tabItem")
+                                button.tab__button(
+                                type="button"
+                                role="tab"
+                                data-js="tabButton"
+                                ) Tab 2
+
+                            li.tab__item(data-js="tabItem")
+                                button.tab__button(
+                                type="button"
+                                role="tab"
+                                data-js="tabButton"
+                                ) Tab 3
+                        .tab__panels
+                            .tab__panel(
+                                role="tabpanel"
+                                data-js="tabPanel"
+                            )
+                                div tab 첫번째 내용입니다.
+                            .tab__panel(
+                                role="tabpanel"
+                                data-js="tabPanel"
+                            )
+                                div tab 두번째 내용입니다.
+                            .tab__panel(
+                                role="tabpanel"
+                                data-js="tabPanel"
+                            )
+                                div tab 세번째 내용입니다.
+
+        h2.guide__type-title scroll tab (mobile기준)
+        div.guide__type-box
+            div.guide__type-item
+                div.guide__type-content
+                    .scroll-tab(style="max-width:40rem")
+                        div.tab.tab--scroll(data-js="tab")
+                            ul.tab__list(data-js="tabList" role="tablist" aria-label="콘텐츠 선택 탭")
+                                li.tab__item(data-js="tabItem")
+                                    button.tab__button(
+                                    type="button"
+                                    role="tab"
+                                    data-js="tabButton"
+                                    ) Tab 1
+
+                                li.tab__item(data-js="tabItem")
+                                    button.tab__button(
+                                    type="button"
+                                    role="tab"
+                                    data-js="tabButton"
+                                    ) Tab 2
+
+                                li.tab__item(data-js="tabItem")
+                                    button.tab__button(
+                                    type="button"
+                                    role="tab"
+                                    data-js="tabButton"
+                                    ) Tab 3
+                                li.tab__item(data-js="tabItem")
+                                    button.tab__button(
+                                    type="button"
+                                    role="tab"
+                                    data-js="tabButton"
+                                    ) Tab 4
+
+                                li.tab__item(data-js="tabItem")
+                                    button.tab__button(
+                                    type="button"
+                                    role="tab"
+                                    data-js="tabButton"
+                                    ) Tab 5
+
+                                li.tab__item(data-js="tabItem")
+                                    button.tab__button(
+                                    type="button"
+                                    role="tab"
+                                    data-js="tabButton"
+                                    ) Tab 6
+                            .tab__panels
+                                .tab__panel(
+                                    role="tabpanel"
+                                    data-js="tabPanel"
+                                )
+                                    div tab 1번째 내용입니다.
+                                .tab__panel(
+                                    role="tabpanel"
+                                    data-js="tabPanel"
+                                )
+                                    div tab 2번째 내용입니다.
+                                .tab__panel(
+                                    role="tabpanel"
+                                    data-js="tabPanel"
+                                )
+                                    div tab 3번째 내용입니다.
+                                .tab__panel(
+                                    role="tabpanel"
+                                    data-js="tabPanel"
+                                )
+                                    div tab 4번째 내용입니다.
+                                .tab__panel(
+                                    role="tabpanel"
+                                    data-js="tabPanel"
+                                )
+                                    div tab 5번째 내용입니다.
+                                .tab__panel(
+                                    role="tabpanel"
+                                    data-js="tabPanel"
+                                )
+                                    div tab 6번째 내용입니다.
+
+        h2.guide__type-title Tab link
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub disabled
+                div.guide__type-content
+            

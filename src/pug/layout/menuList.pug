@@ -1,0 +1,8 @@
+- const menuList = [{ path: '../html/guide_button.html', menu: "Button" }, { path: '../html/guide_inputfield.html', menu: "Inputfield" },{ path: '../html/guide_datepicker.html', menu: "DatePicker" }, { path: '../html/guide_tooltip.html', menu: "Tooltip" }, { path: '../html/guide_tab.html', menu: "Tab" }, { path: '../html/guide_accordion.html', menu: "Accordion" },{ path: '../html/guide_swiper.html', menu: "Swiper Slide" },{ path: '../html/guide_toastpopup.html', menu: "Toast Popup" }, { path: '../html/guide_alert.html', menu: "Alert Popup" }, { path: '../html/guide_layerpopup.html', menu: "Layer Popup" } , { path: '../html/guide_bottomsheet.html', menu: "Bottomsheet Popup" } ]
+
+
+aside.menu-list(data-js="menuList")
+    ul.menu-list__list
+        each item in menuList
+            li.menu-list__item
+                a.menu-list__link(href=item.path)= item.menu

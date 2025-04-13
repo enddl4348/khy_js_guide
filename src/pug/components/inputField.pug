@@ -1,0 +1,15 @@
+mixin inputField(id, placeholder, label, attrs={}, type="text", className="", hasSearchBtn=false, isError=false, errorText="")
+  .input-item(class=className, data-js="inputField")
+    if label
+      label(for=id).input-item__label= label
+    .input-item__field
+      input(type=type, placeholder=placeholder, id=id, data-js="inputField__input")&attributes(attrs).input-item__input
+      button(type="button", data-js="inputField__delete").input-item__delete
+        span.a11y-hidden 입력텍스트 삭제
+      if hasSearchBtn
+        button(type="button").input-item__search
+          span.a11y-hidden 검색
+    if isError
+      p.input-item__error-text= errorText
+        
+

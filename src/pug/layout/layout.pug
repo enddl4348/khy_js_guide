@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title Js Guide
+		link(rel="stylesheet", href="../css/library.css")
+		link(rel="stylesheet", href="../css/style.css")
+		script(src="../js/libs/gsap.min.js")
+		script(src="../js/libs/swiper.min.js")
+	body
+		div.wrap
+			div.guide
+				div.guide__menu 
+					include menuList
+				div.guide__content-wrap 
+					div.guide__content
+						block content
+
+		script(src="../js/ui.js")
+		block bottomScripts

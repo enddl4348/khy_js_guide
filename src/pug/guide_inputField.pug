@@ -1,0 +1,45 @@
+extends ./layout/layout
+include ./components/inputField.pug
+
+block content
+    h1.guide__title InputField
+    main.textfield-guide
+        h2.guide__type-title Default
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub type="text"
+                div.guide__type-content
+                    +inputField("name_01", "이름을 입력해주세요.", "이름", { name: 'name'})
+            
+            div.guide__type-item
+                h3.guide__type-sub type="password"
+                div.guide__type-content
+                    +inputField("password_01", "비밀번호를 입력해주세요.", "비밀번호", { name: 'password', maxlength: 10, required: true, autocomplete: "off" }, "password")
+
+            div.guide__type-item
+                h3.guide__type-sub Search
+                div.guide__type-content
+                    +inputField("search_01", "키워드를 입력해주세요.", "주소", { name: 'search'}, "text", "input-item--search", true)
+
+        h2.guide__type-title Disabled, Readonly
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub disabled
+                div.guide__type-content
+                    +inputField("name_02", "이름을 입력해주세요.", "이름", { name: 'name', disabled: 'disabled', value: "홍길동"})
+            
+            div.guide__type-item
+                h3.guide__type-sub readonly
+                div.guide__type-content
+                    +inputField("email_01", "이메일을 입력해주세요.", "이메일", { name: 'password', readonly: 'readonly', value: "enddl5067@naver.com" })
+            
+            div.guide__type-item
+                h3.guide__type-sub disabled
+                div.guide__type-content
+                    +inputField("search_02", "키워드를 입력해주세요.", "주소", { name: 'search', disabled: 'disabled'}, "text", "input-item--search", true)
+
+        h2.guide__type-title Error
+        div.guide__type-box
+            div.guide__type-item
+                div.guide__type-content
+                    +inputField("error_01", "인증번호를 입력해주세요.", "인증번호", { name: 'error'}, type="text", className="input-item--is-error", false, true, "다시 입력해주세요.")

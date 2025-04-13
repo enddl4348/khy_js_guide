@@ -1,0 +1,20 @@
+@use '../abstracts/variables' as var;
+@use '../abstracts/functions' as func;
+@use '../abstracts/mixins' as mix;
+
+$menu-list: menu-list;
+
+.#{$menu-list} {
+    padding: 8.8rem 0.6rem 4.2rem;
+    &__link {
+        display: block;
+        padding: 1.2rem 2rem 1.2rem 3rem;
+        font-size: 1.4rem;
+        font-weight: var.$font-weight-medium;
+        color: var.$text-color-1;
+        border-radius: 0.8rem;
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.06);
+        }
+    }
+}
