@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Guide</title>
+    <link rel="stylesheet" href="../css/library.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/libs/gsap.min.js"></script>
+    <script src="../js/libs/swiper.min.js"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="guide">
+        <div class="guide__menu"> 
+          <aside class="menu-list" data-js="menuList">
+            <ul class="menu-list__list">
+              <li class="menu-list__item"><a class="menu-list__link" href="../html/guide_button.html">Button</a></li>
+              <li class="menu-list__item"><a class="menu-list__link" href="../html/guide_inputfield.html">Inputfield</a></li>
+              <li class="menu-list__item"><a class="menu-list__link" href="../html/guide_datepicker.html">DatePicker</a></li>
+              <li class="menu-list__item"><a class="menu-list__link" href="../html/guide_tooltip.html">Tooltip</a></li>
+              <li class="menu-list__item"><a class="menu-list__link" href="../html/guide_tab.html">Tab</a></li>
+              <li class="menu-list__item"><a class="menu-list__link" href="../html/guide_accordion.html">Accordion</a></li>
+              <li class="menu-list__item"><a class="menu-list__link" href="../html/guide_swiper.html">Swiper Slide</a></li>
+              <li class="menu-list__item"><a class="menu-list__link" href="../html/guide_toastpopup.html">Toast Popup</a></li>
+              <li class="menu-list__item"><a class="menu-list__link" href="../html/guide_alert.html">Alert Popup</a></li>
+              <li class="menu-list__item"><a class="menu-list__link" href="../html/guide_layerpopup.html">Layer Popup</a></li>
+              <li class="menu-list__item"><a class="menu-list__link" href="../html/guide_bottomsheet.html">Bottomsheet Popup</a></li>
+            </ul>
+          </aside>
+        </div>
+        <div class="guide__content-wrap"> 
+          <div class="guide__content">
+            <h1 class="guide__title">InputField</h1>
+            <main class="textfield-guide">
+              <h2 class="guide__type-title">Default</h2>
+              <div class="guide__type-box">
+                <div class="guide__type-item">
+                  <h3 class="guide__type-sub">type="text"</h3>
+                  <div class="guide__type-content">
+                    <div class="input-item" data-js="inputField">
+                      <label class="input-item__label" for="name_01">이름</label>
+                      <div class="input-item__field">
+                        <input class="input-item__input" type="text" placeholder="이름을 입력해주세요." id="name_01" data-js="inputField__input" name="name"/>
+                        <button class="input-item__delete" type="button" data-js="inputField__delete"><span class="a11y-hidden">입력텍스트 삭제</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="guide__type-item">
+                  <h3 class="guide__type-sub">type="password"</h3>
+                  <div class="guide__type-content">
+                    <div class="input-item" data-js="inputField">
+                      <label class="input-item__label" for="password_01">비밀번호</label>
+                      <div class="input-item__field">
+                        <input class="input-item__input" type="password" placeholder="비밀번호를 입력해주세요." id="password_01" data-js="inputField__input" name="password" maxlength="10" required="required" autocomplete="off"/>
+                        <button class="input-item__delete" type="button" data-js="inputField__delete"><span class="a11y-hidden">입력텍스트 삭제</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="guide__type-item">
+                  <h3 class="guide__type-sub">Search</h3>
+                  <div class="guide__type-content">
+                    <div class="input-item input-item--search" data-js="inputField">
+                      <label class="input-item__label" for="search_01">주소</label>
+                      <div class="input-item__field">
+                        <input class="input-item__input" type="text" placeholder="키워드를 입력해주세요." id="search_01" data-js="inputField__input" name="search"/>
+                        <button class="input-item__delete" type="button" data-js="inputField__delete"><span class="a11y-hidden">입력텍스트 삭제</span></button>
+                        <button class="input-item__search" type="button"><span class="a11y-hidden">검색</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="guide__type-title">Disabled, Readonly</h2>
+              <div class="guide__type-box">
+                <div class="guide__type-item">
+                  <h3 class="guide__type-sub">disabled</h3>
+                  <div class="guide__type-content">
+                    <div class="input-item" data-js="inputField">
+                      <label class="input-item__label" for="name_02">이름</label>
+                      <div class="input-item__field">
+                        <input class="input-item__input" type="text" placeholder="이름을 입력해주세요." id="name_02" data-js="inputField__input" name="name" disabled="disabled" value="홍길동"/>
+                        <button class="input-item__delete" type="button" data-js="inputField__delete"><span class="a11y-hidden">입력텍스트 삭제</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="guide__type-item">
+                  <h3 class="guide__type-sub">readonly</h3>
+                  <div class="guide__type-content">
+                    <div class="input-item" data-js="inputField">
+                      <label class="input-item__label" for="email_01">이메일</label>
+                      <div class="input-item__field">
+                        <input class="input-item__input" type="text" placeholder="이메일을 입력해주세요." id="email_01" data-js="inputField__input" name="password" readonly="readonly" value="enddl5067@naver.com"/>
+                        <button class="input-item__delete" type="button" data-js="inputField__delete"><span class="a11y-hidden">입력텍스트 삭제</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="guide__type-item">
+                  <h3 class="guide__type-sub">disabled</h3>
+                  <div class="guide__type-content">
+                    <div class="input-item input-item--search" data-js="inputField">
+                      <label class="input-item__label" for="search_02">주소</label>
+                      <div class="input-item__field">
+                        <input class="input-item__input" type="text" placeholder="키워드를 입력해주세요." id="search_02" data-js="inputField__input" name="search" disabled="disabled"/>
+                        <button class="input-item__delete" type="button" data-js="inputField__delete"><span class="a11y-hidden">입력텍스트 삭제</span></button>
+                        <button class="input-item__search" type="button"><span class="a11y-hidden">검색</span></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="guide__type-title">Error</h2>
+              <div class="guide__type-box">
+                <div class="guide__type-item">
+                  <div class="guide__type-content">
+                    <div class="input-item input-item--is-error" data-js="inputField">
+                      <label class="input-item__label" for="error_01">인증번호</label>
+                      <div class="input-item__field">
+                        <input class="input-item__input" type="text" placeholder="인증번호를 입력해주세요." id="error_01" data-js="inputField__input" name="error"/>
+                        <button class="input-item__delete" type="button" data-js="inputField__delete"><span class="a11y-hidden">입력텍스트 삭제</span></button>
+                      </div>
+                      <p class="input-item__error-text">다시 입력해주세요.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/ui.js"></script>
+  </body>
+</html>
