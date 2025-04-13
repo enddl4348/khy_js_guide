@@ -25,7 +25,6 @@ const PATH = {
     JS: `${ROOT}/js`,
     FONT: `${ROOT}/font`,
     IMG: `${ROOT}/img`,
-    FILE: `${ROOT}/files`,
 };
 
 // scss options
@@ -103,10 +102,6 @@ export function imgBuild() {
     return src(`${PATH.IMG}/**/*`).pipe(dest(`${DIST}/img`));
 }
 
-export function fileBuild() {
-    return src(`${PATH.FILE}/*`).pipe(dest(`${DIST}/files`));
-}
-
 export function htmlBuild() {
     return src(`${PATH.HTML}/*.html`).pipe(dest(`${DIST}/html`));
 }
@@ -143,7 +138,6 @@ export const build = series(
     distClean,
     fontBuild,
     imgBuild,
-    fileBuild,
     htmlBuild,
     rootFiles,
     cssBuild,
