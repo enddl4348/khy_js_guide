@@ -1,0 +1,12 @@
+mixin tooltip(title, className)
+  .tooltip(class=className, data-js="tooltip")
+    .tooltip__wrap
+      button.tooltip__button(type="button", data-js="tooltip__button")
+      .tooltip__title
+        != title
+    .tooltip__content-box
+      .tooltip__content
+        block
+      button.tooltip__close(type="button", data-js="tooltip__closeButton")
+
+    

@@ -195,18 +195,274 @@ class DatePicker {
     }
 }
 
+// tooltip
+class Tooltip {
+    constructor(element) {
+        this.element = element;
+        this.tooltipButton = this.element.querySelector(
+            '[data-js="tooltip__button"]',
+        );
+        this.tooltipClose = this.element.querySelector(
+            '[data-js="tooltip__closeButton"]',
+        );
+        this.ACTIVE_CLASS = 'is-active';
+
+        if (this.tooltipButton && this.tooltipClose) {
+            this.init();
+        }
+    }
+
+    init() {
+        this.bindEvents(); //이벤트 바인딩
+    }
+
+    bindEvents() {
+        this.tooltipButton.addEventListener('click', () => this.onClickOpen());
+        this.tooltipClose.addEventListener('click', () => this.onClickClose());
+    }
+
+    // tooltip open
+    onClickOpen() {
+        this.element.classList.add(this.ACTIVE_CLASS);
+    }
+
+    // tooltip close
+    onClickClose() {
+        this.element.classList.toggle(this.ACTIVE_CLASS);
+    }
+
+    // 외부에서 툴팁을 닫을 수 있는 메서드
+    close() {
+        this.element.classList.remove(this.ACTIVE_CLASS);
+    }
+}
+
+// accordion
+class Accordion {
+    constructor(element, mode = 'multi') {
+        this.element = element;
+        this.items = Array.from(
+            this.element.querySelectorAll('[data-js="accordionItem"]'),
+        );
+        this.mode = mode; // 'single' || 'multi'
+        this.activeClass = 'is-active';
+        this.init();
+    }
+
+    init() {
+        this.items.forEach((item) => {
+            const button = item.querySelector('[data-js="accordionButton"]');
+            button.addEventListener('click', () => this.handleClick(item));
+            //
+            //1.각 item마다 버튼을 찾아서 click 이벤트를 붙입니다. 그때 화살표 함수 () => this.toggleItem(item)를 등록
+            //2.() => this.toggleItem(item) 는 'item' 값을 기억하고 있는 함수 ((클로저(closure))
+        });
+    }
+
+    handleClick(item) {
+        if (this.mode === 'single') {
+            this.toggleSingle(item);
+        } else {
+            this.toggleMulti(item);
+        }
+    }
+
+    toggleSingle(item) {
+        this.items.forEach((otherItem) => {
+            if (otherItem !== item) {
+                this.closeItem(otherItem);
+            }
+        });
+
+        if (this.isOpen(item)) {
+            this.closeItem(item);
+        } else {
+            this.openItem(item);
+        }
+    }
+
+    toggleMulti(item) {
+        if (this.isOpen(item)) {
+            this.closeItem(item);
+        } else {
+            this.openItem(item);
+        }
+    }
+
+    openItem(item) {
+        item.classList.add(this.activeClass);
+        const button = item.querySelector('[data-js="accordionButton"]');
+        this.setAttributes(button, {
+            'aria-expanded': 'true',
+            'aria-label': '아코디언 닫기',
+        });
+    }
+
+    closeItem(item) {
+        item.classList.remove(this.activeClass);
+        const button = item.querySelector('[data-js="accordionButton"]');
+        this.setAttributes(button, {
+            'aria-expanded': 'false',
+            'aria-label': '아코디언 열기',
+        });
+    }
+
+    isOpen(item) {
+        return item.classList.contains(this.activeClass);
+    }
+    setAttributes(element, attributes) {
+        Object.entries(attributes).forEach(([key, value]) => {
+            element.setAttribute(key, value);
+        });
+    }
+}
+
+// swiper slide
+class SwiperSlide {
+    constructor(element) {
+        this.element = element;
+        this.instance = null;
+
+        // 1. 기본 옵션
+        this.defaultOptions = {
+            loop: true,
+            autoplay: {
+                delay: 4000,
+            },
+        };
+
+        // 2. 타입별 옵션
+        this.optionsMap = {
+            basic: {
+                pagination: {
+                    el: '[data-js="swiper__pagination"]',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '[data-js="swiper__next"]',
+                    prevEl: '[data-js="swiper__prev"]',
+                },
+                autoplay: {
+                    delay: 5000,
+                },
+            },
+            onlyNavigation: {
+                navigation: {
+                    nextEl: '[data-js="swiper__next"]',
+                    prevEl: '[data-js="swiper__prev"]',
+                },
+            },
+            onlyPagination: {
+                pagination: {
+                    el: '[data-js="swiper__pagination"]',
+                    clickable: true,
+                },
+            },
+            paginationFraction: {
+                pagination: {
+                    el: '[data-js="swiper__pagination"]',
+                    clickable: true,
+                    type: 'fraction',
+                },
+                navigation: {
+                    nextEl: '[data-js="swiper__next"]',
+                    prevEl: '[data-js="swiper__prev"]',
+                },
+            },
+            perViewAuto: {
+                loop: false, // 기본 옵션(loop: true)을 덮어쓰기
+                slidesPerView: 'auto',
+                pagination: {
+                    el: '[data-js="swiper__pagination"]',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '[data-js="swiper__next"]',
+                    prevEl: '[data-js="swiper__prev"]',
+                },
+            },
+            progressbar: {
+                pagination: {
+                    el: '[data-js="swiper__pagination"]',
+                    type: 'progressbar',
+                },
+                autoplay: {
+                    delay: 3000,
+                },
+            },
+        };
+
+        this.init();
+    }
+
+    init() {
+        const options = this.getOptions();
+        this.instance = new Swiper(this.element, options);
+    }
+
+    getOptions() {
+        const optionKey = this.element.getAttribute('data-option');
+        if (!optionKey) return { ...this.defaultOptions }; // 기본 옵션 복사
+
+        const typeOptions = this.optionsMap[optionKey];
+        if (!typeOptions) {
+            console.warn(
+                `SwiperSlide: "${optionKey}" 옵션이 존재하지 않습니다.`,
+            );
+            return { ...this.defaultOptions };
+        }
+
+        // 3. 기본 옵션 + 타입별 옵션 merge
+        return this.deepMerge(this.defaultOptions, typeOptions);
+    }
+
+    // 🔥 깊은 병합(Deep Merge) 함수
+    deepMerge(target, source) {
+        const output = { ...target };
+        for (const key in source) {
+            if (
+                typeof source[key] === 'object' &&
+                source[key] !== null &&
+                !Array.isArray(source[key])
+            ) {
+                output[key] = this.deepMerge(target[key] || {}, source[key]);
+            } else {
+                output[key] = source[key];
+            }
+        }
+        return output;
+    }
+}
+
 // ---------------------------------------------------------------------------------------//
 
 // input field
-document.querySelectorAll('[data-js="inputField"]').forEach((inputEl) => {
-    new InputField(inputEl);
+document.querySelectorAll('[data-js="inputField"]').forEach((el) => {
+    new InputField(el);
 });
 
 // tab
-document.querySelectorAll('[data-js="tab"]').forEach((tabEl) => {
-    new Tab(tabEl);
+document.querySelectorAll('[data-js="tab"]').forEach((el) => {
+    new Tab(el);
 });
 
-document.querySelectorAll('[data-js="datePicker"]').forEach((tabEl) => {
-    new DatePicker(tabEl);
+// datepicker
+document.querySelectorAll('[data-js="datePicker"]').forEach((el) => {
+    new DatePicker(el);
+});
+
+// tooltip
+document.querySelectorAll('[data-js="tooltip"]').forEach((el) => {
+    new Tooltip(el);
+});
+
+// accordion
+document.querySelectorAll('[data-js="accordion"]').forEach((el) => {
+    const mode = el.dataset.type || 'multi'; // data-type 속성으로 mode 설정 (기본값: multi)
+    new Accordion(el, mode);
+});
+
+//swiper slide
+document.querySelectorAll('[data-js="swiper"]').forEach((el) => {
+    new SwiperSlide(el);
 });

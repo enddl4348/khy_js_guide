@@ -2,6 +2,26 @@ extends ./layout/layout
 include ./components/accordion.pug
 
 block content
-
+    h1.guide__title Accordion
     main.accordion-guide
-        //-  +accordion()
+        h2.guide__type-title Single
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub single type
+                div.guide__type-content
+                    +accordion([
+                        {title: 'How do I know if my InBody machine is capable of using this service?', content: 'If you have the 270, 570, or 770, please head into the administrator menu of your device and verify if option 4. Cloud Service is available. If this option is not available for you or if you have a device that is not listed here, please feel free to contact us for more information'},
+                        {title: 'Can I use this service outside of the country?', content: 'Please note, that when shipping the unit out of the country it may violate the terms and conditions you have agreed to at the time of the purchase. Currently this service is only available in the United States. The services will not work outside of the 50 states, including US territories and in any other country. As we expect to expand the service to other countries, please feel free to visit this page for any updates.'},
+                        {title: 'What are the Wi-fi requirements for this device?', content: 'Currently, the InBody machine can only connect to the internet on a 2.4Ghz 802.11 B/G/N wireless network. If this option is not available to you, you can also connect to the internet via an ethernet connection as well.'},
+                    ], "single")
+
+        h2.guide__type-title Multi
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub multi type
+                div.guide__type-content
+                    +accordion([
+                        {title: 'How do I know if my InBody machine is capable of using this service?', content: 'If you have the 270, 570, or 770, please head into the administrator menu of your device and verify if option 4. Cloud Service is available. If this option is not available for you or if you have a device that is not listed here, please feel free to contact us for more information'},
+                        {title: 'Can I use this service outside of the country?', content: 'Please note, that when shipping the unit out of the country it may violate the terms and conditions you have agreed to at the time of the purchase. Currently this service is only available in the United States. The services will not work outside of the 50 states, including US territories and in any other country. As we expect to expand the service to other countries, please feel free to visit this page for any updates.'},
+                        {title: 'What are the Wi-fi requirements for this device?', content: 'Currently, the InBody machine can only connect to the internet on a 2.4Ghz 802.11 B/G/N wireless network. If this option is not available to you, you can also connect to the internet via an ethernet connection as well.'},
+                    ])

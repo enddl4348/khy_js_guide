@@ -1,6 +1,6 @@
 @use 'abstracts/functions' as func;
 @use 'abstracts/variables' as var;
-$icon-path: '../img/icon';
+$icon-path: '../../img/icon';
 
 // 반응형 해상도 분기
 @mixin respond-to($breakpoint) {
@@ -8,27 +8,20 @@ $icon-path: '../img/icon';
         @media (max-width: 359px) {
             @content;
         }
-    }
-
-    @else if $breakpoint ==mobile {
+    } @else if $breakpoint ==mobile {
         @media (max-width: 767px) {
             @content;
         }
-    }
-
-    @else if $breakpoint ==tablet {
+    } @else if $breakpoint ==tablet {
         @media (min-width: 768px) {
             @content;
         }
-    }
-
-    @else if $breakpoint ==pc {
+    } @else if $breakpoint ==pc {
         @media (min-width: 1440px) {
             @content;
         }
     }
 }
-
 
 @mixin flexbox($direction: row, $justify: flex-start, $align: center) {
     display: flex;
@@ -37,14 +30,20 @@ $icon-path: '../img/icon';
     align-items: $align;
 }
 
-// center 정렬 
+// center 정렬
 @mixin center-flex {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-@mixin position($position, $top: auto, $right: auto, $bottom: auto, $left: auto) {
+@mixin position(
+    $position,
+    $top: auto,
+    $right: auto,
+    $bottom: auto,
+    $left: auto
+) {
     position: $position;
     top: $top;
     right: $right;
@@ -82,7 +81,7 @@ $icon-path: '../img/icon';
 
 @mixin icon($filename, $width, $height) {
     display: inline-block;
-    background: url("#{$icon-path}/#{$filename}.svg") no-repeat 50% 50%;
+    background: url('#{$icon-path}/#{$filename}.svg') no-repeat 50% 50%;
     background-size: 100% auto;
     width: $width;
     height: $height;

@@ -1,8 +1,8 @@
-mixin accordion(items, animationMode=false)
-    .accordion(data-js="accordion")
+mixin accordion(items, mode="multi")
+    .accordion(data-js="accordion" ,data-type=mode)
         each item in items
-            .accordion__item(data-js="accordionItem", data-animation=animationMode)
-                button.accordion__head(type="button", aria-label="open", data-js="accordionButton")
+            .accordion__item(data-js="accordionItem")
+                button.accordion__head(type="button", aria-label="아코디언 열기", data-js="accordionButton")
                     span.accordion__title= item.title
                 .accordion__content(data-js="accordionContent")
                     p.accordion__desc= item.content

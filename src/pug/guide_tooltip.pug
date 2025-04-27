@@ -1,0 +1,32 @@
+extends ./layout/layout
+include ./components/tooltip.pug
+
+block content
+    h1.guide__title Tooltip
+    main.tooltip-guide
+        h2.guide__type-title 기본 Tooltip
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub (title, 툴팁 컨텐츠)
+                div.guide__type-content
+                    +tooltip("<em>툴팁 제목</em>이 들어갑니다.")
+                        div
+                            strong.tooltip__content-title 안전지도권이란? 
+                            p.tooltip__desc 단체 인솔자에게 무료로 지원되는 티켓으로, 단체유형 및 인원수에 따라 지급 수량이 상이하며 성인 인솔자만 사용이 가능합니다.
+            br
+            br
+            br
+            br
+            br
+            br
+            br
+            br
+            br
+            br
+
+            div.guide__type-item
+                h3.guide__type-sub (title 없는 경우)
+                div.guide__type-content
+                    +tooltip("툴팁 제목이 들어갑니다.")
+                        div
+                            p.tooltip__desc 단체 인솔자에게 무료로 지원되는 티켓으로, 단체유형 및 인원수에 따라 지급 수량이 상이하며 성인 인솔자만 사용이 가능합니다.

@@ -1,0 +1,111 @@
+extends ./layout/layout
+
+block content
+    h1.guide__title Swiper slide
+    main.swiper-guide
+        h2.guide__type-title default
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub default [ nav, pagination 다 있는 경우 : data-option="basic" ]
+                div.guide__type-content
+                    .swiper.swiper--basic(data-js="swiper", data-option="basic")
+                        .swiper-wrapper
+                            .swiper-slide
+                                .swiper__content 슬라이드 1번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 2번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 3번 
+                        .swiper__navigation
+                            button(type="button", aria-label="이전", data-js="swiper__prev").swiper__button.swiper__button--prev 
+                            button(type="button", aria-label="다음", data-js="swiper__next").swiper__button.swiper__button--next 
+                        .swiper__pagination(data-js="swiper__pagination")
+
+        h2.guide__type-title Navigation
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub [ nav만 있는 경우 : data-option="onlyNavigation" ]
+                div.guide__type-content
+                    .swiper.swiper--basic(data-js="swiper", data-option="onlyNavigation")
+                        .swiper-wrapper
+                            .swiper-slide
+                                .swiper__content 슬라이드 1번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 2번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 3번 
+                        .swiper__navigation
+                            button(type="button", aria-label="이전", data-js="swiper__prev").swiper__button.swiper__button--prev 
+                            button(type="button", aria-label="다음", data-js="swiper__next").swiper__button.swiper__button--next 
+
+        h2.guide__type-title Pagination
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub [ pagination만 있는 경우 : data-option="onlyPagination" ]
+                div.guide__type-content
+                    .swiper.swiper--basic(data-js="swiper", data-option="onlyPagination")
+                        .swiper-wrapper
+                            .swiper-slide
+                                .swiper__content 슬라이드 1번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 2번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 3번 
+                        .swiper__pagination(data-js="swiper__pagination")
+
+        h2.guide__type-title Pagination : Fraction
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub [ data-option="paginationFraction" ]
+                div.guide__type-content
+                    .swiper.swiper--basic(data-js="swiper", data-option="paginationFraction")
+                        .swiper-wrapper
+                            .swiper-slide
+                                .swiper__content 슬라이드 1번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 2번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 3번 
+                        .swiper__navigation
+                            button(type="button", aria-label="이전", data-js="swiper__prev").swiper__button.swiper__button--prev 
+                            button(type="button", aria-label="다음", data-js="swiper__next").swiper__button.swiper__button--next 
+                        .swiper__pagination(data-js="swiper__pagination")
+        
+        h2.guide__type-title slidePerview: "auto"
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub [  data-option="perViewAuto" ]
+                div.guide__type-content
+                    .swiper.swiper--perview-auto(data-js="swiper", data-option="perViewAuto")
+                        .swiper-wrapper
+                            .swiper-slide
+                                .swiper__content 슬라이드 1번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 2번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 3번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 4번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 5번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 6번 
+                        .swiper__navigation
+                            button(type="button", aria-label="이전", data-js="swiper__prev").swiper__button.swiper__button--prev 
+                            button(type="button", aria-label="다음", data-js="swiper__next").swiper__button.swiper__button--next 
+                        .swiper__pagination(data-js="swiper__pagination")
+
+        h2.guide__type-title Progressbar
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub [  data-option="progressbar" ]
+                div.guide__type-content
+                    .swiper.swiper--progressbar(data-js="swiper", data-option="progressbar")
+                        .swiper-wrapper
+                            .swiper-slide
+                                .swiper__content 슬라이드 1번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 2번 
+                            .swiper-slide
+                                .swiper__content 슬라이드 3번 
+                        .swiper__pagination(data-js="swiper__pagination")

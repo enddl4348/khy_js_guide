@@ -13,13 +13,13 @@
 @use 'layouts/aside';
 
 // component
-@use 'components/accordion';
 @use 'components/button';
-@use 'components/text';
 @use 'components/input';
 @use 'components/datepicker';
 @use 'components/select';
 @use 'components/tab';
-@use 'components/table';
 @use 'components/tooltip';
+@use 'components/accordion';
+@use 'components/swiper';
+@use 'components/table';
 @use 'components/alert';
