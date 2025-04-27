@@ -1,0 +1,28 @@
+@use 'abstracts/variables' as var;
+@use 'abstracts/functions' as func;
+@use 'abstracts/mixins' as mix;
+
+$datepicker: datepicker;
+
+.#{$datepicker} {
+    position: relative;
+    min-width: 32rem;
+    &__input[type='text'] {
+        &:read-only {
+            color: var.$text-color-1;
+        }
+        &:disabled {
+            color: var.$text-color-1;
+        }
+    }
+    &__icon {
+        position: absolute;
+        right: 1.6rem;
+        top: 1.6rem;
+        // transform: translateY(-50%);
+        width: 2.4rem;
+        height: 2.4rem;
+        background: url('../../img/icon/icon_calendar.svg') no-repeat 50%;
+        background-size: 100% auto;
+    }
+}

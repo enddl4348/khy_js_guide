@@ -1,0 +1,78 @@
+extends ./layout/layout
+
+block content
+    h1.guide__title DatePicker
+    main.textfield-guide
+        h2.guide__type-title default
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub 기본
+                div.guide__type-content
+                div.datepicker
+                    input.datepicker__input(data-js="datePicker" data-option="default")
+                    span.datepicker__icon(aria-hidden="true")
+        
+        h2.guide__type-title minDate, maxDate
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub minDate ("today")
+                div.guide__type-content
+                div.datepicker
+                    input.datepicker__input(data-js="datePicker" data-option="minDate")
+                    span.datepicker__icon(aria-hidden="true")
+            
+            div.guide__type-item
+                h3.guide__type-sub maxDate ("today ~ 14일")
+                div.guide__type-content
+                div.datepicker
+                    input.datepicker__input(data-js="datePicker" data-option="maxDate")
+                    span.datepicker__icon(aria-hidden="true")
+
+        h2.guide__type-title multipleDates
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub multipleDates
+                div.guide__type-content
+                div.datepicker
+                    input.datepicker__input(data-js="datePicker" data-option="multipleDates")
+                    span.datepicker__icon(aria-hidden="true")
+            
+        h2.guide__type-title disabled
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub 전체 disabled
+                div.guide__type-content
+                div.datepicker
+                    input.datepicker__input(data-js="datePicker" disabled)
+                    span.datepicker__icon(aria-hidden="true")
+            
+            div.guide__type-item
+                h3.guide__type-sub 특정 날짜 disabled
+                div.guide__type-content
+                div.datepicker
+                    input.datepicker__input(data-js="datePicker" data-option="specialDisabled") 
+                    span.datepicker__icon(aria-hidden="true")
+        
+        
+        h2.guide__type-title range
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub range mode
+                div.guide__type-content
+                div.datepicker
+                    input.datepicker__input(data-js="datePicker" data-option="range")
+                    span.datepicker__icon(aria-hidden="true")
+
+        h2.guide__type-title Inline
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub inline mode
+                div.guide__type-content
+                div.datepicker
+                    input.datepicker__input(data-js="datePicker" data-option="inline")
+                    span.datepicker__icon(aria-hidden="true")
+            
+
+
+block bottomScripts
+    script. 

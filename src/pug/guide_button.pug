@@ -1,0 +1,109 @@
+extends ./layout/layout
+include ./components/button.pug
+
+block content
+    h1.guide__title Button
+    main.textfield-guide
+        h2.guide__type-title Color, Border
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub color="black"(default)
+                div.guide__type-content
+                    +button("Button", "")
+                    +button("Button", "button--medium")
+                    +button("Button", "button--small")
+
+            div.guide__type-item
+                h3.guide__type-sub color="purple"
+                div.guide__type-content
+                    +button("Button", "button--purple") 
+                    +button("Button", "button--purple button--medium")
+                    +button("Button", "button--purple button--small")
+
+            div.guide__type-item
+                h3.guide__type-sub color="blue"
+                div.guide__type-content
+                    +button("Button", "button--blue") 
+                    +button("Button", "button--blue button--medium")
+                    +button("Button", "button--blue button--small")
+            
+            div.guide__type-item
+                h3.guide__type-sub border="black(default)"
+                div.guide__type-content
+                    +button("Button", "button--border") 
+                    +button("Button", "button--border button--medium")
+                    +button("Button", "button--border button--small")
+            
+            div.guide__type-item
+                h3.guide__type-sub border="purple"
+                div.guide__type-content
+                    +button("Button", "button--border-purple") 
+                    +button("Button", "button--border-purple button--medium")
+                    +button("Button", "button--border-purple button--small")
+
+            div.guide__type-item
+                h3.guide__type-sub border="blue"
+                div.guide__type-content
+                    +button("Button", "button--border-blue") 
+                    +button("Button", "button--border-blue button--medium")
+                    +button("Button", "button--border-blue button--small")
+            
+            div.guide__type-item
+                h3.guide__type-sub border="white"
+                div.guide__type-content(style="background-color: #666; padding: 1.2rem; border-radius: 1rem")
+                    +button("Button", "button--transparent") 
+                    +button("Button", "button--transparent button--medium")
+                    +button("Button", "button--transparent button--small")
+
+        h2.guide__type-title Size
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub size="large"(default)
+                div.guide__type-content
+                    +button("Button", "")
+
+            div.guide__type-item
+                h3.guide__type-sub size="medium"
+                div.guide__type-content
+                    +button("Button", "button--medium")
+
+            div.guide__type-item
+                h3.guide__type-sub size="small"
+                div.guide__type-content
+                    +button("Button", "button--small")
+        
+        h2.guide__type-title Disabled
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub color type
+                div.guide__type-content
+                    +button("Button", "", {disabled: "disabled"})
+                    +button("Button", "button--transparent", {disabled: "disabled"})
+            
+            div.guide__type-item
+                h3.guide__type-sub border type
+                div.guide__type-content
+                    +button("Button", "button--border-purple", {disabled: "disabled"})
+        
+        h2.guide__type-title Icon Button
+        div.guide__type-box
+            div.guide__type-item
+                h3.guide__type-sub Icon
+                div.guide__type-content
+                    button(type="button").button--icon
+                        i.button--icon__icon.refresh-icon
+                        span.a11y-hidden 검색
+
+            div.guide__type-item
+                h3.guide__type-sub Icon + Text (아이콘 왼쪽)
+                div.guide__type-content
+                    button(type="button").button--icon.text
+                        i.button--icon__icon.refresh-icon
+                        span.button--icon__text 검색
+            
+            div.guide__type-item
+                h3.guide__type-sub Icon + Text (아이콘 오른쪽)
+                div.guide__type-content
+                    button(type="button").button--icon.text
+                        span.button--icon__text 검색
+                        i.button--icon__icon.refresh-icon

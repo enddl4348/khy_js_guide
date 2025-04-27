@@ -2,45 +2,6 @@
 @use 'abstracts/functions' as func;
 @use 'abstracts/mixins' as mix;
 
-input[type='text'],
-input[type='number'],
-input[type='password'],
-textarea {
-    @include mix.fontStyle(1.6rem, 400, 1.4);
-    @include mix.widthHeight(100%, 5.6rem);
-    padding: 0 4.8rem 0 1.6rem;
-    background: var.$white-color;
-    border: 1px solid var.$gray-ddd;
-    border-radius: 0.8rem;
-    &::placeholder {
-        color: var.$gray-999;
-    }
-}
-
-input[type='text']:focus,
-input[type='number']:focus,
-input[type='password']:focus {
-    border-color: var.$text-color-1;
-    outline: none;
-}
-
-input[disabled],
-input[readonly] {
-    background-color: var.$bg-f4;
-}
-input[disabled] {
-    color: var.$gray-999;
-}
-
-input[readonly] {
-    color: var.$gray-666;
-}
-
-input[disabled] ~ .input-item__search,
-input[readOnly] ~ .input-item__search {
-    background-image: url('../../img/icon/icon_search_disabled.svg');
-}
-
 $input-item: input-item;
 
 .#{$input-item} {
@@ -106,48 +67,42 @@ $input-item: input-item;
     }
 }
 
-// radio
-.input-radio {
-    position: relative;
-
-    &-group {
-        @include mix.flexbox();
-        margin-top: 1.6rem;
-
-        @include mix.respond-to(pc) {
-            margin-top: 3.2rem;
-        }
+input[type='text'],
+input[type='number'],
+input[type='password'],
+input[type='date'],
+textarea {
+    @include mix.fontStyle(1.6rem, 400, 1.4);
+    @include mix.widthHeight(100%, 5.6rem);
+    padding: 0 4.8rem 0 1.6rem;
+    background: var.$white-color;
+    border: 1px solid var.$gray-ddd;
+    border-radius: 0.8rem;
+    &::placeholder {
+        color: var.$gray-999;
     }
+}
 
-    &__field {
-        @include mix.position(absolute, $top: 0, $left: 0);
-        @include mix.widthHeight(100%, 100%);
+input[type='text']:focus,
+input[type='number']:focus,
+input[type='password']:focus {
+    border-color: var.$text-color-1;
+    outline: none;
+}
 
-        &:checked + .input-radio__label:before {
-            background-image: url('../img/icon/icon_radio_active.svg');
-        }
-    }
+input[disabled],
+input[readonly]:not(.flatpickr-input) {
+    background-color: var.$bg-f4;
+}
+input[disabled] {
+    color: var.$gray-999;
+}
 
-    &__label {
-        @include mix.flexbox();
-        @include mix.fontStyle(1.5rem, 400, 1.46);
+input[readonly] {
+    color: var.$gray-666;
+}
 
-        @include mix.respond-to(pc) {
-            font-size: 2rem;
-        }
-
-        &::before {
-            content: '';
-            @include mix.icon(icon_radio, 1.8rem, 1.8rem);
-            margin-right: 0.8rem;
-
-            @include mix.respond-to(pc) {
-                @include mix.widthHeight(2.4rem, 2.4rem);
-            }
-        }
-    }
-
-    & ~ .input-radio {
-        margin-left: 2.4rem;
-    }
+input[disabled] ~ .input-item__search,
+input[readOnly] ~ .input-item__search {
+    background-image: url('../../img/icon/icon_search_disabled.svg');
 }

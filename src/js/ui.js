@@ -130,6 +130,71 @@ class Tab {
     }
 }
 
+// DatePicker
+class DatePicker {
+    constructor(element) {
+        this.element = element;
+        this.type = this.element.dataset.option || 'default'; // 기본값 설정
+        this.instance = null;
+        this.init();
+    }
+
+    init() {
+        const options = this.getOptionsByType(this.type);
+        this.instance = flatpickr(this.element, options);
+    }
+
+    getOptionsByType(type) {
+        const baseOptions = {
+            locale: 'ko',
+            dateFormat: 'Y-m-d',
+            defaultDate: 'today',
+        };
+
+        const typeOptions = {
+            default: {},
+            // minDate
+            minDate: {
+                minDate: 'today',
+            },
+            // maxDate
+            maxDate: {
+                minDate: 'today',
+                maxDate: new Date().fp_incr(14), // 오늘부터 14 days
+            },
+            multipleDates: {
+                mode: 'multiple',
+                dateFormat: 'Y-m-d',
+                defaultDate: 'today',
+            },
+
+            // 특정 날짜 disabled
+            specialDisabled: {
+                defaultDate: '2025-04-20',
+                disable: [
+                    '2025-04-15',
+                    '2025-04-24',
+                    '2025-04-25',
+                    '2025-04-26',
+                ],
+            },
+            // range mode
+            range: {
+                mode: 'range',
+                defaultDate: [
+                    'today',
+                    new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7일 뒤
+                ],
+            },
+            inline: {
+                inline: true,
+            },
+        };
+
+        return { ...baseOptions, ...(typeOptions[type] || {}) };
+    }
+}
+
 // ---------------------------------------------------------------------------------------//
 
 // input field
@@ -140,4 +205,8 @@ document.querySelectorAll('[data-js="inputField"]').forEach((inputEl) => {
 // tab
 document.querySelectorAll('[data-js="tab"]').forEach((tabEl) => {
     new Tab(tabEl);
+});
+
+document.querySelectorAll('[data-js="datePicker"]').forEach((tabEl) => {
+    new DatePicker(tabEl);
 });
