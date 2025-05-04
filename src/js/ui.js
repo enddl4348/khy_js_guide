@@ -434,6 +434,136 @@ class SwiperSlide {
     }
 }
 
+// alertPopup
+class AlertPopup {
+    constructor(element) {
+        this.element = element;
+        this.ACTIVE_CLASS = 'is-open';
+
+        this.triggerButton = null; // 포커스 복귀용
+
+        this.cancelBtn = this.element.querySelector(
+            '[data-js="alertPopup__cancel"]',
+        );
+        this.confirmBtn = this.element.querySelector(
+            '[data-js="alertPopup__confirm"]',
+        );
+        this.closeBtn = this.element.querySelector(
+            '[data-js="alertPopup__close"]',
+        );
+
+        // 접근성 속성
+        this.element.setAttribute('role', 'dialog');
+        this.element.setAttribute('aria-modal', 'true');
+        this.element.setAttribute('aria-hidden', 'true');
+
+        this.init();
+    }
+
+    init() {
+        this.cancelBtn?.addEventListener('click', () => this.close());
+        this.closeBtn?.addEventListener('click', () => this.close());
+        this.confirmBtn?.addEventListener('click', () => {
+            if (this.onConfirm) this.onConfirm();
+        });
+    }
+
+    open(triggerButton = null) {
+        this.triggerButton = triggerButton; // 트리거 버튼 기억
+        this.element.classList.add(this.ACTIVE_CLASS);
+        this.element.setAttribute('aria-hidden', 'false');
+
+        // body에 no-scroll 클래스 추가
+        document.body.classList.add('no-scroll');
+
+        // 포커스 이동 (팝업 안 첫 번째 포커스 요소)
+        const focusTarget = this.element.querySelector(
+            '[data-js="alertPopup__confirm"], button, [tabindex]:not([tabindex="-1"])',
+        );
+        focusTarget?.focus();
+    }
+
+    close() {
+        this.element.classList.remove(this.ACTIVE_CLASS);
+        this.element.setAttribute('aria-hidden', 'true');
+
+        // body에 no-scroll 클래스 추가
+        document.body.classList.remove('no-scroll');
+
+        // 트리거 버튼으로 포커스 복귀
+        this.triggerButton?.focus();
+    }
+
+    setConfirmHandler(callback) {
+        this.onConfirm = callback;
+    }
+}
+
+// LayerPopup
+class LayerPopup {
+    constructor(element) {
+        this.element = element;
+        this.ACTIVE_CLASS = 'is-open';
+
+        this.triggerButton = null; // 포커스 복귀용
+
+        this.cancelBtn = this.element.querySelector(
+            '[data-js="layerPopup__cancel"]',
+        );
+        this.confirmBtn = this.element.querySelector(
+            '[data-js="layerPopup__confirm"]',
+        );
+        this.closeBtn = this.element.querySelector(
+            '[data-js="layerPopup__close"]',
+        );
+
+        // 접근성 속성
+        this.element.setAttribute('role', 'dialog');
+        this.element.setAttribute('aria-modal', 'true');
+        this.element.setAttribute('aria-hidden', 'true');
+
+        this.init();
+    }
+
+    init() {
+        this.cancelBtn?.addEventListener('click', () => this.close());
+        this.closeBtn?.addEventListener('click', () => this.close());
+        this.confirmBtn?.addEventListener('click', () => {
+            if (this.onConfirm) this.onConfirm();
+        });
+    }
+
+    open(triggerButton = null) {
+        this.triggerButton = triggerButton; // 트리거 버튼 기억
+        this.element.classList.add(this.ACTIVE_CLASS);
+        this.element.setAttribute('aria-hidden', 'false');
+
+        // body에 no-scroll 클래스 추가
+        document.body.classList.add('no-scroll');
+
+        // 포커스 이동 (팝업 안 첫 번째 포커스 요소)
+        const focusTarget = this.element.querySelector(
+            '[data-js="layerPopup__confirm"], button, [tabindex]:not([tabindex="-1"])',
+        );
+        focusTarget?.focus();
+    }
+
+    close() {
+        this.element.classList.remove(this.ACTIVE_CLASS);
+        this.element.setAttribute('aria-hidden', 'true');
+
+        // body에서 no-scroll 클래스 제거
+        document.body.classList.remove('no-scroll');
+
+        // 트리거 버튼으로 포커스 복귀
+        this.triggerButton?.focus();
+    }
+
+    setConfirmHandler(callback) {
+        this.onConfirm = callback;
+    }
+}
+
 // ---------------------------------------------------------------------------------------//
 
 // input field
@@ -465,4 +595,38 @@ document.querySelectorAll('[data-js="accordion"]').forEach((el) => {
 //swiper slide
 document.querySelectorAll('[data-js="swiper"]').forEach((el) => {
     new SwiperSlide(el);
+});
+
+//alert, confirm
+const alertInstances = {}; //팝업들을 id 기준으로 관리하는 객체
+
+document.querySelectorAll('[data-js="alertPopup"]').forEach((el) => {
+    const id = el.id;
+    alertInstances[id] = new AlertPopup(el);
+    console.log(alertInstances);
+});
+
+// alert 트리거 버튼
+document.querySelectorAll('[data-js="alertPopup-target"]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-popup-target');
+        alertInstances[targetId]?.open();
+    });
+});
+
+//layerPopup
+const layerPopupInstances = {}; //팝업들을 id 기준으로 관리하는 객체
+
+document.querySelectorAll('[data-js="layerPopup"]').forEach((el) => {
+    const id = el.id;
+    layerPopupInstances[id] = new LayerPopup(el);
+    console.log(layerPopupInstances);
+});
+
+// layer popup 트리거 버튼
+document.querySelectorAll('[data-js="layerPopup-target"]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-popup-target');
+        layerPopupInstances[targetId]?.open();
+    });
 });

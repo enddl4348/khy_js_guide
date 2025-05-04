@@ -2,7 +2,9 @@
 @use 'abstracts/functions' as func;
 @use 'abstracts/mixins' as mix;
 
-.accordion {
+$accordion: accordion;
+
+.#{$accordion} {
     &__item {
         padding: 3.2rem;
         background: var.$bg-f9;

@@ -1,0 +1,57 @@
+extends ./layout/layout
+
+block content
+    h1.guide__title Alert
+    main.alert-guide
+        h2.guide__type-title Alert
+        .guide__type-box
+            .guide__type-item
+                .guide__type-content
+                    button.button(type="button", data-js="alertPopup-target", data-popup-target="alert1") Alert Open
+                    .alert-popup(data-js="alertPopup", id="alert1")
+                        .alert-popup__dim
+                        .alert-popup__popup 
+                            .alert-popup__inner
+                                .alert-popup__header Alert Title
+                                .alert-popup__body Alert 내용이 들어갑니다.  Alert 내용이 들어갑니다.Alert 내용이 들어갑니다.                                    
+                                .alert-popup__footer
+                                    button.alert-popup__button(type="button", data-js="alertPopup__cancel") 확인
+                                button.alert-popup__close(type="button", data-js="alertPopup__close") 
+                                    span.a11y-hidden alert 닫기
+                                    
+        h2.guide__type-title Confirm
+        .guide__type-box
+            .guide__type-item
+                .guide__type-content
+                    button.button(type="button", data-js="alertPopup-target", data-popup-target="confirm1") Confirm Open
+                    .alert-popup(data-js="alertPopup", id="confirm1")
+                        .alert-popup__dim
+                        .alert-popup__popup 
+                            .alert-popup__inner
+                                .alert-popup__header Confirm Title
+                                .alert-popup__body Confirm 내용이 들어갑니다.  Confirm 내용이 들어갑니다.Confirm 내용이 들어갑니다.                                    
+                                .alert-popup__footer
+                                    button.alert-popup__button.line(type="button", data-js="alertPopup__cancel") 취소
+                                    button.alert-popup__button(type="button", data-js="alertPopup__confirm") 확인
+                                button.alert-popup__close(type="button", data-js="alertPopup__close") 
+                                    span.a11y-hidden alert 닫기
+
+                    //- 이중팝업
+                    .alert-popup(data-js="alertPopup", id="alert2")
+                        .alert-popup__dim
+                        .alert-popup__popup 
+                            .alert-popup__inner
+                                .alert-popup__header 이중 팝업 Title
+                                .alert-popup__body 이중 팝업입니다.                               
+                                .alert-popup__footer
+                                    button.alert-popup__button(type="button", data-js="alertPopup__cancel") 확인
+                                button.alert-popup__close(type="button", data-js="alertPopup__close") 
+                                    span.a11y-hidden  닫기
+
+block bottomScripts
+    script.
+        //- 이중 팝업 연결(외부 method)
+        alertInstances['confirm1'].setConfirmHandler(() => {
+            alertInstances['confirm1'].close();
+            alertInstances['alert2'].open();
+        });

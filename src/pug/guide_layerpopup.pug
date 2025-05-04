@@ -1,0 +1,59 @@
+extends ./layout/layout
+
+block content
+    h1.guide__title Layer Popup
+    main.layer-popup-guide
+        h2.guide__type-title Default
+        .guide__type-box
+            .guide__type-item
+                .guide__type-content
+                    button.button(type="button", data-js="layerPopup-target", data-popup-target="layerPopup1") Layer Popup1 Open
+                    .layer-popup(data-js="layerPopup", id="layerPopup1")
+                        .layer-popup__dim
+                        .layer-popup__popup 
+                            .layer-popup__inner
+                                .layer-popup__header Layer popup Title
+                                .layer-popup__body Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. Layer popup 내용이 들어갑니다. 
+                                .layer-popup__footer
+                                    button.layer-popup__button(type="button", data-js="layerPopup__cancel") 확인
+                                button.layer-popup__close(type="button", data-js="layerPopup__close") 
+                                    span.a11y-hidden 닫기
+
+        h2.guide__type-title 이중 팝업
+        .guide__type-box
+            .guide__type-item
+                .guide__type-content
+                    button.button(type="button", data-js="layerPopup-target", data-popup-target="layerPopup2") Layer Popup2 Open
+                    .layer-popup(data-js="layerPopup", id="layerPopup2")
+                        .layer-popup__dim
+                        .layer-popup__popup 
+                            .layer-popup__inner
+                                .layer-popup__header Layer popup Title
+                                .layer-popup__body Layer popup 내용이 들어갑니다.  Layer popup 내용이 들어갑니다.Layer popup 내용이 들어갑니다.                                    
+                                .layer-popup__footer
+                                    button.layer-popup__button.line(type="button", data-js="layerPopup__cancel") 취소
+                                    button.layer-popup__button(type="button", data-js="layerPopup__confirm") 확인
+                                button.layer-popup__close(type="button", data-js="layerPopup__close") 
+                                    span.a11y-hidden 닫기
+
+            
+
+                    //-  이중팝업
+                    .alert-popup(data-js="alertPopup", id="alert3")
+                        .alert-popup__dim
+                        .alert-popup__popup 
+                            .alert-popup__inner
+                                .alert-popup__header 이중 팝업 Title
+                                .alert-popup__body 이중 팝업입니다.                               
+                                .alert-popup__footer
+                                    button.alert-popup__button(type="button", data-js="alertPopup__cancel") 확인
+                                button.alert-popup__close(type="button", data-js="alertPopup__close") 
+                                    span.a11y-hidden  닫기
+
+block bottomScripts
+    script.
+        //- 이중 팝업 연결(외부 method)
+        layerPopupInstances['layerPopup2'].setConfirmHandler(() => {
+            layerPopupInstances['layerPopup2'].close();
+            alertInstances['alert3'].open();
+        });

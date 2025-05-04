@@ -11,10 +11,10 @@ $swiper: swiper;
         min-height: 30rem;
         background-color: rgb(221, 237, 255);
         color: var.$text-color-1;
+        border-radius: 2rem;
         & {
             @include mix.fontStyle(1.6rem, 600, 1.4);
         }
-        border-radius: 2rem;
     }
     &__navigation {
         position: absolute;
